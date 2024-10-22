@@ -1,6 +1,5 @@
-import { View, Text, Image, Dimensions, StyleSheet } from 'react-native';
+import { View, Text, Image, Dimensions, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import React from 'react';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import Carousel from 'react-native-reanimated-carousel';
 
 const { width, height } = Dimensions.get('window');

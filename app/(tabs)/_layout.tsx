@@ -12,7 +12,7 @@ export default function TabLayout() {
     <Tabs
    
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor: "#E1CE7A",
         headerShown: false,
         tabBarStyle:{backgroundColor:'black'}
       }}>
@@ -21,7 +21,7 @@ export default function TabLayout() {
         options={{
           title: 'movies',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'play-circle' : 'play-circle-outline'} color={"white"} />
+            <TabBarIcon name={focused ? 'play-circle' : 'play-circle-outline'} color={"#E1CE7A"} />
           ),
         }}
       />
@@ -30,7 +30,7 @@ export default function TabLayout() {
         options={{
           title: 'shortlist',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'heart' : 'heart-outline'} color={"white"} />
+            <TabBarIcon name={focused ? 'heart' : 'heart-outline'} color={"#E1CE7A"} />
           ),
         }}
       />
