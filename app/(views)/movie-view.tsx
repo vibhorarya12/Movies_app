@@ -4,13 +4,26 @@ import { router, useLocalSearchParams } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { useQuery } from '@tanstack/react-query';
 import MovieDetails from '@/components/MovieDetails';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToList } from '@/redux/action';
 
 const { width, height } = Dimensions.get('window');
 
 const MovieView = () => {
   const { id } = useLocalSearchParams(); // Get the movie ID from the search parameters
   const [shortListed, setShortListed] = useState(false);
+  const dispatch = useDispatch();
+  const {moviesList} = useSelector(state=>state.movies);
 
+
+  console.log("movies list is", moviesList);
+  interface Movie {
+    imdbID: string;
+    Title: string;
+    Year: string;
+    Type: string;
+    Poster: string;
+  }
   // Fetch movie details using useQuery
   const { data: movieData, isLoading, isError } = useQuery({
     queryKey: ['fetchMovie', id],
@@ -20,8 +33,8 @@ const MovieView = () => {
     enabled: !!id, // Only run the query if the ID is present
   });
 
-  const handleShortList = () => {
-    setShortListed(!shortListed);
+  const handleShortList = (item:Movie) => {
+    dispatch(addToList(item));
   };
 
   // if (isLoading) {

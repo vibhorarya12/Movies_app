@@ -7,7 +7,8 @@ import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-
+import { Provider } from 'react-redux';
+import Store from '@/redux/store';
 const queryClient = new QueryClient();
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -30,6 +31,7 @@ export default function RootLayout() {
   }
 
   return (
+    <Provider store={Store}>
     <QueryClientProvider client={queryClient}>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
@@ -37,5 +39,6 @@ export default function RootLayout() {
         <Stack.Screen name="+not-found" />
       </Stack>
       </QueryClientProvider>
+      </Provider>
   );
 }
