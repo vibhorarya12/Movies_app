@@ -5,7 +5,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { useQuery } from '@tanstack/react-query';
 import MovieDetails from '@/components/MovieDetails';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToList } from '@/redux/action';
+import { addToList, removeFromList } from '@/redux/action';
+import axios from 'axios';
 
 const { width, height } = Dimensions.get('window');
 
@@ -15,6 +16,7 @@ const MovieView = () => {
   const dispatch = useDispatch();
   const {moviesList} = useSelector(state=>state.movies);
 
+  
 
   console.log("movies list is", moviesList);
   interface Movie {
@@ -28,13 +30,22 @@ const MovieView = () => {
   const { data: movieData, isLoading, isError } = useQuery({
     queryKey: ['fetchMovie', id],
     queryFn: () =>
-      fetch(`http://www.omdbapi.com/?apikey=6c54a197&i=${id}`)
-        .then((res) => res.json()),
+      axios.get(`http://www.omdbapi.com/?apikey=6c54a197&i=${id}`)
+        .then((res) => res.data),
     enabled: !!id, // Only run the query if the ID is present
   });
 
+  const isShortListed = movieData && moviesList.some(movie => movie.imdbID === movieData.imdbID);
+
+
   const handleShortList = (item:Movie) => {
-    dispatch(addToList(item));
+    if(isShortListed){
+     dispatch(removeFromList(item.imdbID)); 
+    }
+    else{
+      dispatch(addToList(item));
+    }
+   
   };
 
   // if (isLoading) {
@@ -59,8 +70,8 @@ const MovieView = () => {
     >
        {isLoading?<ActivityIndicator size="large" color="#FED766" style={{ flex: 1, justifyContent: 'center', alignItems: 'center' , marginTop:150}} />:<MovieDetails
         movieData={movieData}
-        shortListed={shortListed}
         handleShortList={handleShortList}
+        isShortListed={isShortListed}
         
       />}
     </ScrollView>

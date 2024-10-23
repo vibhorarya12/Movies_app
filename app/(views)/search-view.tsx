@@ -5,6 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 import { Ionicons } from '@expo/vector-icons';
 import { useQuery, useInfiniteQuery } from '@tanstack/react-query';
 import { router } from 'expo-router';
+import axios from 'axios';
 
 const { width, height } = Dimensions.get('window');
 
@@ -39,10 +40,10 @@ const SearchView = () => {
   } = useInfiniteQuery({
     queryKey: ['searchMovies', search],
     queryFn: async ({ pageParam = 1 }) => {
-      const response = await fetch(
+      const response = await axios.get(
         `http://www.omdbapi.com/?apikey=6c54a197&s=${encodeURIComponent(search)}&page=${pageParam}`
       );
-      const data: SearchResponse = await response.json();
+      const data: SearchResponse = await response.data;
       return {
         movies: data.Search || [],
         totalResults: parseInt(data.totalResults || '0'),
