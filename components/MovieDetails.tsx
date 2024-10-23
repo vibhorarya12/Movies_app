@@ -5,7 +5,7 @@ import { router } from 'expo-router';
 
 const { width, height } = Dimensions.get('window');
 
-const MovieDetails = ({ movieData, shortListed, handleShortList }) => {
+const MovieDetails = ({ movieData,  handleShortList, isShortListed }) => {
   const item = {
     Title: movieData.Title,
     Year: movieData.Year,
@@ -35,7 +35,7 @@ const MovieDetails = ({ movieData, shortListed, handleShortList }) => {
           <Ionicons size={35} name="arrow-back-circle" color="#FED766" />
         </TouchableOpacity>
         <TouchableOpacity style={{ backgroundColor: 'black', borderRadius: 40 }} onPress={()=>handleShortList(item)}>
-          <Ionicons size={35} name={shortListed ? 'heart' : 'heart-outline'} color="#FED766" />
+          <Ionicons size={35} name={isShortListed ? 'heart' : 'heart-outline'} color="#FED766" />
         </TouchableOpacity>
       </SafeAreaView>
 
