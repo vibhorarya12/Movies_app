@@ -6,6 +6,7 @@ import { router } from 'expo-router';
 const { width, height } = Dimensions.get('window');
 
 const data = [
+  
     {
         "Title": "Game of Thrones",
         "Year": "2011–2019",
@@ -13,34 +14,46 @@ const data = [
         "Type": "series",
         "Poster": "https://m.media-amazon.com/images/M/MV5BOGY3NTg1ODMtOGIzZS00YWFiLTgzYzktNzBiYWZkYjcwNGRhXkEyXkFqcGc@._V1_SX300.jpg"
     },
-  {
-    Title: 'Captain America: The Winter Soldier',
-    Year: '2014',
-    imdbID: 'tt1843866',
-    Type: 'movie',
-    Poster: 'https://m.media-amazon.com/images/M/MV5BNWY1NjFmNDItZDhmOC00NjI1LWE0ZDItMTM0MjBjZThiOTQ2XkEyXkFqcGc@._V1_SX300.jpg',
+
+    {"Title":"Breaking Bad","Year":"2008–2013","imdbID":"tt0903747","Type":"series","Poster":"https://m.media-amazon.com/images/M/MV5BMzU5ZGYzNmQtMTdhYy00OGRiLTg0NmQtYjVjNzliZTg1ZGE4XkEyXkFqcGc@._V1_SX300.jpg"},
+    {
+      "Title": "Money Heist",
+      "Year": "2017–2021",
+      "imdbID": "tt6468322",
+      "Type": "series",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BZjkxZWJiNTUtYjQwYS00MTBlLTgwODQtM2FkNWMyMjMwOGZiXkEyXkFqcGc@._V1_SX300.jpg"
   },
+
+
+ 
   {
-    Title: 'Spider-Man: Homecoming',
-    Year: '2017',
-    imdbID: 'tt2250912',
-    Type: 'movie',
-    Poster: 'https://m.media-amazon.com/images/M/MV5BODY2MTAzOTQ4M15BMl5BanBnXkFtZTgwNzg5MTE0MjI@._V1_SX300.jpg',
-  },
-  {
-    Title: 'The Dark Knight Rises',
-    Year: '2012',
-    imdbID: 'tt1345836',
-    Type: 'movie',
-    Poster: 'https://m.media-amazon.com/images/M/MV5BMTk4ODQzNDY3Ml5BMl5BanBnXkFtZTcwODA0NTM4Nw@@._V1_SX300.jpg',
-  },
-  {
-    Title: 'Captain Marvel',
-    Year: '2019',
-    imdbID: 'tt4154664',
-    Type: 'movie',
-    Poster: 'https://m.media-amazon.com/images/M/MV5BZDI1NGU2ODAtNzBiNy00MWY5LWIyMGEtZjUxZjUwZmZiNjBlXkEyXkFqcGc@._V1_SX300.jpg',
-  },
+    "Title": "House of the Dragon",
+    "Year": "2022–",
+    "imdbID": "tt11198330",
+    "Type": "series",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BM2QzMGVkNjUtN2Y4Yi00ODMwLTg3YzktYzUxYjJlNjFjNDY1XkEyXkFqcGc@._V1_SX300.jpg"
+},
+{
+  "Title": "Prison Break",
+  "Year": "2005–2017",
+  "imdbID": "tt0455275",
+  "Type": "series",
+  "Poster": "https://m.media-amazon.com/images/M/MV5BMTljM2Y5OTUtMzg3Yy00ZjI3LTg4YzUtMmVkMGY2NTgyMmQ3XkEyXkFqcGc@._V1_SX300.jpg"
+},
+{
+  "Title": "Brooklyn Nine-Nine",
+  "Year": "2013–2021",
+  "imdbID": "tt2467372",
+  "Type": "series",
+  "Poster": "https://m.media-amazon.com/images/M/MV5BNzBiODQxZTUtNjc0MC00Yzc1LThmYTMtN2YwYTU3NjgxMmI4XkEyXkFqcGc@._V1_SX300.jpg"
+},
+{
+  "Title": "The Crown",
+  "Year": "2016–2023",
+  "imdbID": "tt4786824",
+  "Type": "series",
+  "Poster": "https://m.media-amazon.com/images/M/MV5BODcyODZlZDMtZGE0Ni00NjBhLWJlYTAtZDdlNWY3MzkwMGVhXkEyXkFqcGc@._V1_SX300.jpg"
+}
 ];
 
 const TopRatedShows = () => {

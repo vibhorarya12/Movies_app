@@ -1,6 +1,7 @@
 import { View, Text, Image, Dimensions, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import React from 'react';
 import Carousel from 'react-native-reanimated-carousel';
+import { router } from 'expo-router';
 
 const { width, height } = Dimensions.get('window');
 
@@ -68,7 +69,7 @@ const MovieCard = ({ item }) => {
   // Fallback if item or item.Poster is undefined
   const posterUri = item?.Poster ?? 'https://via.placeholder.com/300';
   return (
-    <TouchableWithoutFeedback onPress={()=>console.log(item.Title)}>
+    <TouchableWithoutFeedback onPress={()=>router.push({ pathname: '/(views)/movie-view', params: { id: item.imdbID } })}>
       <Image resizeMode={'cover'} source={{ uri: posterUri }} style={styles.image} />
     </TouchableWithoutFeedback>
   );
