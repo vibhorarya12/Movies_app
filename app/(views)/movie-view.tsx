@@ -7,6 +7,7 @@ import MovieDetails from '@/components/MovieDetails';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToList, removeFromList } from '@/redux/action';
 import axios from 'axios';
+import { BASE_URL } from '@/constants/BaseUrl';
 
 const { width, height } = Dimensions.get('window');
 
@@ -30,7 +31,7 @@ const MovieView = () => {
   const { data: movieData, isLoading, isError } = useQuery({
     queryKey: ['fetchMovie', id],
     queryFn: () =>
-      axios.get(`http://www.omdbapi.com/?apikey=6c54a197&i=${id}`)
+      axios.get(`${BASE_URL}&i=${id}`)
         .then((res) => res.data),
     enabled: !!id, // Only run the query if the ID is present
   });

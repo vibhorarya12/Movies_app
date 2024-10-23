@@ -6,6 +6,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useQuery, useInfiniteQuery } from '@tanstack/react-query';
 import { router } from 'expo-router';
 import axios from 'axios';
+import { BASE_URL } from '@/constants/BaseUrl';
 
 const { width, height } = Dimensions.get('window');
 
@@ -29,7 +30,6 @@ interface MovieCardProps {
 
 const SearchView = () => {
   const [search, setSearch] = useState('');
-
   const {
     data,
     fetchNextPage,
@@ -41,7 +41,7 @@ const SearchView = () => {
     queryKey: ['searchMovies', search],
     queryFn: async ({ pageParam = 1 }) => {
       const response = await axios.get(
-        `http://www.omdbapi.com/?apikey=6c54a197&s=${encodeURIComponent(search)}&page=${pageParam}`
+       `${BASE_URL}?s=${encodeURIComponent(search)}&page=${pageParam}`
       );
       const data: SearchResponse = await response.data;
       return {
