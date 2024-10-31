@@ -31,10 +31,10 @@ const MovieDetails = ({ movieData,  handleShortList, isShortListed }) => {
           width: width * 0.95,
         }}
       >
-        <TouchableOpacity style={{ backgroundColor: 'black', borderRadius: 40 }} onPress={()=>router.back()}>
+        <TouchableOpacity  onPress={()=>router.back()}>
           <Ionicons size={35} name="arrow-back-circle" color="#FED766" />
         </TouchableOpacity>
-        <TouchableOpacity style={{ backgroundColor: 'black', borderRadius: 40 }} onPress={()=>handleShortList(item)}>
+        <TouchableOpacity onPress={()=>handleShortList(item)}>
           <Ionicons size={35} name={isShortListed ? 'heart' : 'heart-outline'} color="#FED766" />
         </TouchableOpacity>
       </SafeAreaView>
