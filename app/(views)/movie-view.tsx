@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity, Image, Dimensions, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity, Image, Dimensions, ActivityIndicator, ToastAndroid } from 'react-native';
 import React, { useState } from 'react';
 import { router, useLocalSearchParams } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
@@ -41,10 +41,12 @@ const MovieView = () => {
 
   const handleShortList = (item:Movie) => {
     if(isShortListed){
-     dispatch(removeFromList(item.imdbID)); 
+     dispatch(removeFromList(item.imdbID));
+     ToastAndroid.show("removed from favourites", ToastAndroid.SHORT); 
     }
     else{
       dispatch(addToList(item));
+      ToastAndroid.show("added to favourites", ToastAndroid.SHORT);
     }
    
   };
