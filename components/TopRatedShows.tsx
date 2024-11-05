@@ -1,4 +1,4 @@
-import { View, Text, Image, Dimensions, StyleSheet , TouchableWithoutFeedback} from 'react-native';
+import { View, Text, Image, Dimensions, StyleSheet , TouchableWithoutFeedback, FlatList} from 'react-native';
 import React from 'react';
 import Carousel from 'react-native-reanimated-carousel';
 import { router } from 'expo-router';
@@ -60,7 +60,7 @@ const TopRatedShows = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Top rated tv shows</Text>
-      <Carousel
+      {/* <Carousel
             style={{borderColor:'white'}}
                 mode={'parallax'}
                 pagingEnabled={true}
@@ -73,6 +73,16 @@ const TopRatedShows = () => {
                 data={data}
                 
                 renderItem={({item})=><MovieCard item={item}/>}
+            /> */}
+            <FlatList
+                data={data}
+                renderItem={({ item, index }) => (
+                  <MovieCard item={item}/> 
+                )}
+                keyExtractor={(item, index) => index.toString()}
+                horizontal
+                showsHorizontalScrollIndicator={false} // Optional: hide the scroll indicator
+                contentContainerStyle={styles.contentContainer} // Optional styling
             />
     </View>
   );
@@ -82,10 +92,10 @@ const MovieCard = ({ item }) => {
   // Fallback if item or item.Poster is undefined
   const posterUri = item?.Poster ?? 'https://via.placeholder.com/300';
   return (
-    <TouchableWithoutFeedback onPress={() => router.push({ pathname: '/(views)/movie-view', params: { id: item.imdbID } })}>
-      <View> 
-        <Image resizeMode={'cover'} source={{ uri: posterUri }} style={styles.image} />
-        <Text style={styles.title}>{item.Title.length > 14 ? item.Title.slice(0, 14) + '...' : item.Title} {item.Year}</Text>
+    <TouchableWithoutFeedback  onPress={() => router.push({ pathname: '/(views)/movie-view', params: { id: item.imdbID } })}>
+      <View style={{ borderColor:'white' , justifyContent:'center', alignItems:'center'}}> 
+        <Image resizeMode={'contain'} source={{ uri: posterUri }} style={styles.image} />
+        {/* <Text style={styles.title}>{item.Title.length > 8 ? item.Title.slice(0, 8) : item.Title} {item.Year}</Text> */}
       </View>
     </TouchableWithoutFeedback>
   );
@@ -103,14 +113,20 @@ const styles = StyleSheet.create({
   title: {
     color: 'white',
     fontSize: 20,
-    marginLeft:5
+    marginLeft:5,
+    letterSpacing:1.5
    
   },
   image: {
-    width: width * 0.9,
+    width: width * 0.38,
     height: height * 0.3,
     borderRadius: 20,
   },
+  contentContainer: {
+    paddingHorizontal: 10,
+    marginTop:10,
+    gap:5
+},
 });
 
 export default TopRatedShows;
