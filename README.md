@@ -4,3 +4,11 @@
 ### Screenshots 🖼️
 
 ![moviesapp](https://github.com/user-attachments/assets/339f5ede-ddb3-4dd2-a8d5-902f6f917661)
+
+### Demo (video)
+
+https://github.com/user-attachments/assets/4527b4c4-0cd9-452d-8731-d0513a441133
+
+
+
+
